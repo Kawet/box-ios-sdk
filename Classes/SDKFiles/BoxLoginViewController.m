@@ -116,7 +116,7 @@
 #pragma mark - BoxLoginBuilderDelegate Methods
 
 - (void)loginCompletedWithUser:(BoxUser *)user stayLoggedIn:(BOOL)stayLoggedIn {
-    [Analytics trackEvent:@"InApp" withAction:@"LogInBox" withLabel:nil withValue:0];
+    [Analytics trackEvent:@"InApp" withAction:@"ServiceLogIn" withLabel:@"Box" withValue:0];
     [user save:stayLoggedIn];
     if (self.boxLoginDelegate && [self.boxLoginDelegate respondsToSelector:@selector(boxLoginViewController:didFinishWithResult:)]) {
         [self.boxLoginDelegate boxLoginViewController:self didFinishWithResult:LoginSuccess];
