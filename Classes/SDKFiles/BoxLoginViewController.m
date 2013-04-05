@@ -20,6 +20,7 @@
 #import "BoxLoginNavigationController.h"
 #import "BoxLoginBuilder.h"
 #import "Analytics.h"
+#import "UserData.h"
 
 
 @interface BoxLoginViewController () <BoxLoginBuilderDelegate> {
@@ -116,7 +117,11 @@
 #pragma mark - BoxLoginBuilderDelegate Methods
 
 - (void)loginCompletedWithUser:(BoxUser *)user stayLoggedIn:(BOOL)stayLoggedIn {
-    [Analytics trackEvent:@"InApp" withAction:@"ServiceLogIn" withLabel:@"Box" withValue:0];
+    UserData *userData = [UserData sharedUserDataSingleton];
+    NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+    nf.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *appIdNumber = [nf numberFromString:userData.currentAppId];
+    [Analytics trackEvent:@"InApp" withAction:@"ServiceLogIn" withLabel:@"Box" withValue:appIdNumber];
     [user save:stayLoggedIn];
     if (self.boxLoginDelegate && [self.boxLoginDelegate respondsToSelector:@selector(boxLoginViewController:didFinishWithResult:)]) {
         [self.boxLoginDelegate boxLoginViewController:self didFinishWithResult:LoginSuccess];
