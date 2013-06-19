@@ -117,7 +117,7 @@
 #pragma mark - BoxLoginBuilderDelegate Methods
 
 - (void)loginCompletedWithUser:(BoxUser *)user stayLoggedIn:(BOOL)stayLoggedIn {
-    UserData *userData = [UserData sharedUserDataSingleton];
+    UserData *userData = [UserData sharedInstance];
     NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
     nf.numberStyle = NSNumberFormatterDecimalStyle;
     NSNumber *appIdNumber = [nf numberFromString:userData.currentAppId];

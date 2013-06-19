@@ -73,7 +73,7 @@
 	// if we don't have the ticket, request it
 	// otherwise, go straight to the next step
 	NSLog(@"starting login process");
-	if (!self.ticketOperation.ticket || self.ticketOperation.ticket == @"") {
+	if (!self.ticketOperation.ticket || [self.ticketOperation.ticket isEqualToString: @""]) {
 		NSLog(@"starting the ticket operation");
         if (_delegate) {
             [_delegate startActivityIndicator];

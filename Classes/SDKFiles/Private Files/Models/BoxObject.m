@@ -116,10 +116,10 @@
 		[returnDict setObject:[NSString stringWithFormat:@"%@", self.objectSize] forKey:@"size"];
 	}
 	if(self.objectCreatedTime) {
-		[returnDict setObject:[NSString stringWithFormat:@"%u", [self.objectCreatedTime timeIntervalSince1970]] forKey:@"created"];
+		[returnDict setObject:[NSString stringWithFormat:@"%f", [self.objectCreatedTime timeIntervalSince1970]] forKey:@"created"];
 	}
 	if(self.objectUpdatedTime) {
-		[returnDict setObject:[NSString stringWithFormat:@"%u", [self.objectUpdatedTime timeIntervalSince1970]] forKey:@"updated"];
+		[returnDict setObject:[NSString stringWithFormat:@"%f", [self.objectUpdatedTime timeIntervalSince1970]] forKey:@"updated"];
 	}
 
 	return returnDict;
